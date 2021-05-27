@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load mathfilters %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% load static %}
+<script type="text/javascript" src="{% static 'product-filter.js' %}"></script>
+
+{% block brand_filter %}
+    {% for brand in brands %}
+     
+    <li style="list-style: none; text-align: left;">
+        <label style="display: flex; vertical-align: top; position: relative">
+            <input class="filter-checkbox" type="checkbox" value="{{ brand }}" name="brand">&nbsp; 
+            {{ brand }}
+        </label>
+    </li>
+    {% endfor %}
+{% endblock brand_filter %}
+                        
+
+{% block product_items %}
+    {% for product in products %}
+    <div class="product-items col-md-3">
+        {% if product.brand == 'Howler Bros' %}
+        <div class="image"><a href="{{ product.link }}"><img src="https://{{ product.image }}" alt="" class="img-fluid image1"></a></div>
+        {% else %}
+        <div class="image"><a href="{{ product.link }}"><img src="{{ product.image }}" alt="" class="img-fluid image1"></a></div>
+        {% endif %}
+        <div class="text">
+            <h4><a href="{{ product.link }}">{{ product.brand }}</a></h4>
+            <h6 class="h6"><a href="{{ product.link }}">{{ product.product_name }}</a></h6>
+            <p class="price">
+                <del>${{ product.old_price }}</del>  ${{ product.new_price }}  <span class="discount">{{ product.discount|abs }}%</span>
+            </p>
+        </div>        
+    </div>
+    {% endfor %}
+{% endblock product_items %}
+
+{% block pagination %}
+    <!--Pagination-->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+        {% if products.has_previous %}
+            <li class="page-item">
+            <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+            <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+        {% endif %}
+
+        {% if products.number|add:'-4' > 1 %}
+            <li class="page-item"><a class="page-link" href="?page={{ products.number|add:'-5' }}">&hellip;</a></li>
+        {% endif %}
+
+        {% for i in products.paginator.page_range %}
+            {% if products.number == i %}
+                <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+            {% elif i > products.number|add:'-5' and i < products.number|add:'5' %}
+                 <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if products.paginator.num_pages > products.number|add:'4' %}
+           <li class="page-item"><a class="page-link" href="?page={{ products.number|add:'5' }}">&hellip;</a></li>
+        {% endif %}
+
+        {% if products.has_next %}
+            <li class="page-item">
+            <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+            <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+{% endblock pagination %}

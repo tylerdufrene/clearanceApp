@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <table style="width:100%">
+            <tr>
+              <th>product name</th>
+              <th>old price</th>
+              <th>new price</th>
+            </tr>
+            {% for product in data %}
+                <tr>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.old_price }}</td>
+                    <td>{{ product.new_price }}</td>
+                </tr>
+            {% endfor %}
+            
+          </table>
+    </body>
+</html>
