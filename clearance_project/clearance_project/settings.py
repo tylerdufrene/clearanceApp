@@ -85,21 +85,20 @@ WSGI_APPLICATION = 'clearance_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'clearance_products',
+    #     'USER': 'root',
+    #     'PASSWORD': '1122#Mysqldb',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    # },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'clearance_products',
-        'USER': 'root',
+        'NAME': 'tylerdufrene$default',
+        'USER': 'tylerdufrene',
         'PASSWORD': '1122#Mysqldb',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    },
-    'postgresql': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'super',
-        'PASSWORD': '1122#Postgresql',
-        'HOST': 'tylerdufrene-2248.postgres.pythonanywhere-services.com',
-        'PORT': '12248',
+        'HOST': 'tylerdufrene.mysql.pythonanywhere-services.com',
     }
 }
 
