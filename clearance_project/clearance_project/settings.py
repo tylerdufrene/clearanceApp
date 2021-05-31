@@ -21,10 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g%s1+otnl5yj07k3f3ry%f=+r-@ekd&3tu!glkv9vxio-!od2w'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-g%s1+otnl5yj07k3f3ry%f=+r-@ekd&3tu!glkv9vxio-!od2w')
+# SECRET_KEY = 'django-insecure-g%s1+otnl5yj07k3f3ry%f=+r-@ekd&3tu!glkv9vxio-!od2w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG','') != 'False'
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,20 +85,21 @@ WSGI_APPLICATION = 'clearance_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'clearance_products',
-    #     'USER': 'root',
-    #     'PASSWORD': '1122#Mysqldb',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
-    # },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tylerdufrene$clearance_products',
-        'USER': 'tylerdufrene',
-        'PASSWORD': '1122#Pythonanywhere',
-        'HOST': 'tylerdufrene.mysql.pythonanywhere-services.com',
+        'NAME': 'clearance_products',
+        'USER': 'root',
+        'PASSWORD': '1122#Mysqldb',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    },
+    'postgresql': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'super',
+        'PASSWORD': '1122#Postgresql',
+        'HOST': 'tylerdufrene-2248.postgres.pythonanywhere-services.com',
+        'PORT': '12248',
     }
 }
 
