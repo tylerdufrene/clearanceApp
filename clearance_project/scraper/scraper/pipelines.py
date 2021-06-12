@@ -38,7 +38,8 @@ from .settings import DB_CREDS
 class MySQLPipeline(object):
     def __init__(self):
         self.conn = MySQLdb.connect(DB_CREDS['host'], DB_CREDS['user'], DB_CREDS['password'], 
-                                    DB_CREDS['db'], charset="utf8",
+                                    # DB_CREDS['db'],
+                                    charset="utf8",
                                     use_unicode=True)
         self.cursor = self.conn.cursor()
 
