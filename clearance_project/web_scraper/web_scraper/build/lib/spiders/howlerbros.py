@@ -1,8 +1,6 @@
 import scrapy
-import MySQLdb
-
-from web_scraper.items import WebScraperItem
-from web_scraper.settings import DB_CREDS
+from scrapy.settings import Settings
+from scrapy.crawler import CrawlerProcess
 from scrapy.http import Request
 import json
 import datetime
@@ -17,7 +15,7 @@ class HowlerBrosSpider(scrapy.Spider):
 
     def parse(self, response):
         for product in response.css('h2.grid-product'):
-            item = WebScraperItem()
+            item = {}
             item['product_name'] = product.css('span.grid-name::text').get()
             item['old_price'] = product.css('span.grid-strike::text').re('\d+.*')[0]
             item['new_price'] = product.css('span.grid-onsale::text').re('\d+.*')[0]
@@ -52,3 +50,13 @@ class HowlerBrosSpider(scrapy.Spider):
         sizes = response.css('div.option-group div.swatch-element::attr(data-value)').extract()
         item['sizes'] = json.dumps(sizes)
         yield item
+        
+# if __name__ == "__main__":
+#     crawler_settings = Settings()
+#     crawler_settings.setmodule(settings)
+#     process = CrawlerProcess({
+#         'FEED_FORMAT': 'csv',
+#         'FEED_URI': 'output.csv'
+#     })
+#     process.crawl(HowlerBrosSpider, urls_file='input.txt')
+#     process.start()

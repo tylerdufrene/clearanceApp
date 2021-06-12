@@ -1,0 +1,11 @@
+setup.py
+spiders/__init__.py
+spiders/howlerbros.py
+spiders/marine_layer.py
+spiders/nordstrom_rack.py
+spiders/sierra.py
+spiders/top_scraper.py
+web_scraper.egg-info/PKG-INFO
+web_scraper.egg-info/SOURCES.txt
+web_scraper.egg-info/dependency_links.txt
+web_scraper.egg-info/top_level.txt

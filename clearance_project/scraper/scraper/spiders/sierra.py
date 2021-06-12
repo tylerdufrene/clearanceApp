@@ -1,13 +1,13 @@
 import scrapy
-import base64
-from scrapy.spiders import Rule
-from scrapy.linkextractors import LinkExtractor
-from web_scraper.items import WebScraperItem
+from scrapy.crawler import CrawlerProcess
 from scrapy.http import Request
 import json
 import datetime
 
-class MarineLayerSpider(scrapy.Spider):
+from ..items import WebScraperItem
+
+
+class SierraSpider(scrapy.Spider):
     name = "sierra"
     start_urls = [
         'https://www.sierra.com/clearance~1/men~d~5284',
@@ -57,5 +57,4 @@ class MarineLayerSpider(scrapy.Spider):
         # item['image'] = response.css('img.image-zoom__image::attr(src)').get()
         # yield item
         
-    
     

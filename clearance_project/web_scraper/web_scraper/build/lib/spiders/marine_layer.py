@@ -1,9 +1,5 @@
 import scrapy
-import base64
-from scrapy.spiders import CrawlSpider, Rule
-from scrapy.linkextractors import LinkExtractor
-from scrapy.selector import Selector
-from web_scraper.items import WebScraperItem
+from scrapy.crawler import CrawlerProcess
 from scrapy.http import Request
 import json
 import datetime
@@ -21,7 +17,7 @@ class MarineLayerSpider(scrapy.Spider):
     def parse(self, response):
         
         for prod in response.css('div.grid__item div.grid__item'):
-            item = WebScraperItem()
+            item = {}
             item['brand']= 'Marine Layer'
             item['product_name']= prod.css('div.medium-down--show h6.product-info__name::text').get().lstrip().rstrip()
             item['old_price']= prod.css('span.ComparePrice::text').get().replace('$','').replace(',','')
@@ -60,8 +56,7 @@ class MarineLayerSpider(scrapy.Spider):
     
     
     
-    
-        
-                
-
-            
+if __name__ == "__main__":
+    process = CrawlerProcess()
+    process.crawl(MarineLayerSpider)
+    process.start()
