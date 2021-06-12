@@ -74,7 +74,7 @@ DB_CREDS = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'scraper.pipelines.MySQLPipeline': 300,
-   'scraper.pipelines.MongoPipeline': 500,
+#    'scraper.pipelines.MongoPipeline': 500,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
