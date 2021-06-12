@@ -21,11 +21,13 @@ ROBOTSTXT_OBEY = True
 
 
 DB_CREDS = {
-    'host': '127.0.0.1',
-    'user': 'root',
+    'host': 'tylerdufrene.mysql.pythonanywhere-services.com',
+    'user': 'tylerdufrene',
     'password': '1122#Mysqldb',
     'db': 'clearance_products'
 }
+
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
