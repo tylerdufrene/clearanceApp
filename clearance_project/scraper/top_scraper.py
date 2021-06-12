@@ -7,7 +7,7 @@ from scraper.settings import DB_CREDS
 
 
 MySQLdb.connect(DB_CREDS['host'], DB_CREDS['user'], DB_CREDS['password'], 
-                                    DB_CREDS['db'], charset="utf8",
+                                    charset="utf8",
                                     use_unicode=True)
 
 # cursor= db.cursor()
