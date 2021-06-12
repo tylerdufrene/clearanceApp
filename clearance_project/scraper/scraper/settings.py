@@ -24,7 +24,7 @@ DB_CREDS = {
     'host': 'tylerdufrene.mysql.pythonanywhere-services.com',
     'user': 'tylerdufrene',
     'password': '1122#Mysqldb',
-    'db': 'tylerdufrene$default.store_products'
+    'db': 'default',
 }
 
 

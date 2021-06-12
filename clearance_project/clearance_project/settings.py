@@ -96,7 +96,7 @@ DATABASES = {
     # ,
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tylerdufrene$',
+        'NAME': 'tylerdufrene$default',
         'USER': 'tylerdufrene',
         'PASSWORD': '1122#Mysqldb',
         'HOST': 'tylerdufrene.mysql.pythonanywhere-services.com',
