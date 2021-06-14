@@ -85,22 +85,22 @@ WSGI_APPLICATION = 'clearance_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'clearance_products',
-    #     'USER': 'root',
-    #     'PASSWORD': '1122#Mysqldb',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
-    # }
-    # ,
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tylerdufrene$default',
-        'USER': 'tylerdufrene',
+        'NAME': 'clearance_products',
+        'USER': 'root',
         'PASSWORD': '1122#Mysqldb',
-        'HOST': 'tylerdufrene.mysql.pythonanywhere-services.com',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
+    # ,
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'tylerdufrene$default',
+    #     'USER': 'tylerdufrene',
+    #     'PASSWORD': '1122#Mysqldb',
+    #     'HOST': 'tylerdufrene.mysql.pythonanywhere-services.com',
+    # }
 }
 
 
@@ -157,5 +157,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-if os.environ.get('DJANGO_DEVELOPMENT'):
-    from .settings_dev import *  # or specific overrides
